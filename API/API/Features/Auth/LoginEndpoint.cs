@@ -41,7 +41,7 @@ public class LoginEndpoint : Endpoint<LoginRequest, LoginResponse>
             ThrowError("Invalid password.", 401);
         }
 
-        var jwtKey = _config["Jwt:SecretKey"] ?? "SUPER_SECRET_KEY_FOR_JWT_SUVLET_2026_PORTFOLIO!";
+        var jwtKey = _config["Jwt:SecretKey"] ?? throw new InvalidOperationException("JWT SecretKey is missing in configuration.");
         var expiresAt = DateTime.UtcNow.AddDays(2);
 
         var token = JwtBearer.CreateToken(o =>
