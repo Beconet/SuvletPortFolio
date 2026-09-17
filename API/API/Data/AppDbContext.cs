@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
     public DbSet<Releases> Releases => Set<Releases>();
     public DbSet<Discography> Discography => Set<Discography>();
     public DbSet<DemoTracks> DemoTracks => Set<DemoTracks>();
+    public DbSet<SystemSetting> SystemSettings => Set<SystemSetting>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,5 +21,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Releases>().HasKey(r => r.Id);
         modelBuilder.Entity<Discography>().HasKey(d => d.Id);
         modelBuilder.Entity<DemoTracks>().HasKey(t => t.Id);
+        modelBuilder.Entity<SystemSetting>().HasKey(s => s.Key);
     }
 }
