@@ -1,6 +1,24 @@
-﻿namespace API.Data
+﻿using API.Data.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace API.Data;
+
+public class AppDbContext : DbContext
 {
-    public class AppDbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public DbSet<ProfileInfo> ProfileInfo => Set<ProfileInfo>();
+    public DbSet<Releases> Releases => Set<Releases>();
+    public DbSet<Discography> Discography => Set<Discography>();
+    public DbSet<DemoTracks> DemoTracks => Set<DemoTracks>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ProfileInfo>().HasKey(p => p.Id);
+        modelBuilder.Entity<Releases>().HasKey(r => r.Id);
+        modelBuilder.Entity<Discography>().HasKey(d => d.Id);
+        modelBuilder.Entity<DemoTracks>().HasKey(t => t.Id);
     }
 }
