@@ -33,5 +33,45 @@ namespace API.Shared.Services
             await _s3Client.PutObjectAsync(request, ct);
             return $"{_options.PublicAccessUrl.TrimEnd('/')}/{fileName}";
         }
+
+        public async Task<bool> DeleteFileAsync(string fileUrl, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(fileUrl)) return false;
+
+            var cleanUrl = fileUrl.Trim().Trim('"').Trim('\'');
+
+            if (!Uri.TryCreate(cleanUrl, UriKind.Absolute, out var uri))
+            {
+                return false;
+            }
+
+            var rawPath = uri.AbsolutePath.TrimStart('/');
+
+
+            var deleteRequest = new DeleteObjectRequest
+            {
+                BucketName = _options.BucketName,
+                Key = rawPath
+            };
+
+            var response = await _s3Client.DeleteObjectAsync(deleteRequest, ct);
+
+            if (response.HttpStatusCode == System.Net.HttpStatusCode.NoContent ||
+                response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var unescapedKey = Uri.UnescapeDataString(rawPath);
+                if (unescapedKey != rawPath)
+                {
+                    await _s3Client.DeleteObjectAsync(new DeleteObjectRequest
+                    {
+                        BucketName = _options.BucketName,
+                        Key = unescapedKey
+                    }, ct);
+                }
+                return true;
+            }
+
+            return false;
+        }
     }
 }
