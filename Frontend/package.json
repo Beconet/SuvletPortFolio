@@ -16,7 +16,12 @@
     "@pinia/nuxt": "1.0.2",
     "nuxt": "^4.5.2",
     "pinia": "^4.0.3",
+    "playwright-core": "^1.63.0",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vue-tsc": "^3.3.11"
   }
 }
