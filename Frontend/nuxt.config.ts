@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    '@nuxtjs/seo',
     '@nuxt/image'
   ],
   css: ['~/assets/main.css'],
