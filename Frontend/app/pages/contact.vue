@@ -18,22 +18,22 @@
 
         <div v-if="profile?.instagramUrl" class="flex items-center justify-between py-5 border-b border-[#222]">
           <span class="text-xs uppercase tracking-wider text-[#888]">INSTAGRAM</span>
-          <a :href="profile.instagramUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">Instagram ↗</a>
+          <a :href="profile.instagramUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">Instagram</a>
         </div>
 
         <div v-if="profile?.spotifyUrl" class="flex items-center justify-between py-5 border-b border-[#222]">
           <span class="text-xs uppercase tracking-wider text-[#888]">SPOTIFY</span>
-          <a :href="profile.spotifyUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">Spotify ↗</a>
+          <a :href="profile.spotifyUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">Spotify</a>
         </div>
 
         <div v-if="profile?.soundcloudUrl" class="flex items-center justify-between py-5 border-b border-[#222]">
           <span class="text-xs uppercase tracking-wider text-[#888]">SOUNDCLOUD</span>
-          <a :href="profile.soundcloudUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">SoundCloud ↗</a>
+          <a :href="profile.soundcloudUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">SoundCloud</a>
         </div>
 
         <div v-if="profile?.youtubeUrl" class="flex items-center justify-between py-5 border-b border-[#222]">
           <span class="text-xs uppercase tracking-wider text-[#888]">YOUTUBE</span>
-          <a :href="profile.youtubeUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">YouTube ↗</a>
+          <a :href="profile.youtubeUrl" target="_blank" class="text-base font-medium hover:text-[#ccff00] transition">YouTube</a>
         </div>
       </div>
 
